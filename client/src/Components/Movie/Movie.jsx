@@ -17,10 +17,10 @@ function Movie({ title, imdbID, poster, favorites }) {
     e.preventDefault();
     setIsLoading(true);
     const response = await fetch(
-      `https://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=${
-        import.meta.env.VITE_APP_MOVIE_API_KEY
-      }`
-      // `${import.meta.env.VITE_APP_API_ADDRESS}movie/${imdbID}`
+      // `https://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=${
+      //   import.meta.env.VITE_APP_MOVIE_API_KEY
+      // }`
+      `${import.meta.env.VITE_APP_API_ADDRESS}movie/${imdbID}`
     );
     const data = await response.json();
     setMovieInfo(data);

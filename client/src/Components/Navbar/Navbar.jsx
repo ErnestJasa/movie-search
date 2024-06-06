@@ -44,7 +44,7 @@ function Navbar() {
   const login = useGoogleLogin({
     onSuccess: async (response) => {
       try {
-        console.log(response);
+        // console.log(response);
         const res = await fetch(
           `${import.meta.env.VITE_APP_API_ADDRESS}google-auth`,
           {
