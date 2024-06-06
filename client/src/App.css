@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.user-info {
+  display: none;
+}
+.user {
+  position: relative;
+}
+.user:hover .user-info {
+  display: inline;
+  /* flex-direction: column;
+  justify-content: start;
+  align-items: start; */
+  position: absolute;
+}

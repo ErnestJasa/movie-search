@@ -1,0 +1,39 @@
+.dropdown {
+  /* display: inline-block; */
+}
+
+/* .dropdown:hover {
+  box-shadow: 0px 0 20px 1px rgba(121, 246, 134, 0.677);
+} */
+
+.dropdown:hover .content {
+  background-color: #56565649;
+}
+.dropdown .content {
+  transform: translateY(-70%);
+  opacity: 0;
+  transition: all 0.3s;
+}
+.content:hover {
+  transform: translateY(0);
+  opacity: 100;
+}
+.dropdown:hover .content {
+  transform: translateY(0%);
+  opacity: 100;
+}
+.slide-down {
+  animation-name: slide-down;
+  animation-duration: 300ms;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 100;
+    transform: translateY(0);
+  }
+}

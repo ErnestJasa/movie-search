@@ -1,0 +1,20 @@
+.search-input,
+.search-btn {
+  background-color: transparent;
+  outline: 1px solid white;
+}
+.search-btn:hover {
+  background-color: rgba(255, 255, 255, 0.113);
+}
+
+.search:focus-within {
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0 20px 1px rgba(121, 246, 134, 0.677);
+}
+.search {
+}
+/* .search:focus {
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0 20px 1px rgba(121, 246, 134, 0.677);
+  clip-path: inset(-100px 0px -100px -100px);
+} */
