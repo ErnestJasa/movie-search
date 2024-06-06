@@ -35,7 +35,7 @@ function App() {
   }, []);
   return (
     <div className="min-h-screen bg-black text-white ">
-      <Router base="/movie-search-test">
+      <Router base="/movie-search">
         <Navbar />
         {alert.show && <Alert {...alert} />}
         <Switch>
