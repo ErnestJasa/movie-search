@@ -43,9 +43,7 @@ function Navbar() {
   }, []);
   const login = useGoogleLogin({
     onSuccess: async (response) => {
-      console.log(response);
       try {
-        // console.log(response);
         const res = await fetch(
           `${import.meta.env.VITE_APP_API_ADDRESS}google-auth`,
           {
@@ -154,9 +152,6 @@ function Navbar() {
               alt=""
               referrerPolicy="no-referrer"
             />
-            {/* <button className=" text-red-500" onClick={logout}>
-              Logout
-            </button> */}
           </div>
           {show && (
             <ul className="slide-down absolute right-0 text-right lg:hidden z-10 w-full bg-black/50 backdrop-blur rounded-xl">

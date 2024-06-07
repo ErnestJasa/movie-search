@@ -63,12 +63,7 @@ function Favorites() {
     }
   }, [loggedIn]);
   useEffect(() => {
-    if (
-      moviesFromLocalStorage &&
-      moviesFromLocalStorage.length !== 0
-      // &&
-      // moviesFromServer.length !== 0
-    ) {
+    if (moviesFromLocalStorage && moviesFromLocalStorage.length !== 0) {
       moviesFromLocalStorage.forEach((movieFromLocalStorage) => {
         if (
           !moviesFromServer.some(
