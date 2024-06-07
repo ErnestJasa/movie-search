@@ -111,16 +111,15 @@ function Navbar() {
           console.log(data);
           setLoggedIn(false);
           setUser({});
-          localStorage.removeItem("favorites");
-
           hideAlert();
           showAlert({
             text: data.message,
             type: "success",
           });
           setTimeout(() => {
+            localStorage.removeItem("favorites");
             location.reload();
-          }, 750);
+          }, 800);
         } else {
           console.log(data);
         }
@@ -160,12 +159,24 @@ function Navbar() {
             </button> */}
           </div>
           {show && (
-            <button
-              className="slide-down absolute right-0 lg:hidden text-red-500"
-              onClick={logout}
-            >
-              Logout
-            </button>
+            <ul className="slide-down absolute right-0 text-right lg:hidden z-10 w-full bg-black/50 backdrop-blur rounded-xl">
+              <li className="border-b-[2px] border-slate-500 rounded-xl">
+                <button
+                  className=" text-rose-700  active:text-red-600 active:shadow-slate-500 shadow-sm p-2 rounded-xl text-right"
+                  onClick={deleteUser}
+                >
+                  Delete user data
+                </button>
+              </li>
+              <li className="border-b-[2px] border-slate-500 rounded-xl">
+                <button
+                  className=" text-red-500 active:text-red-400 active:shadow-slate-500 shadow-sm p-2 rounded-xl"
+                  onClick={logout}
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
           )}
           <ul
             className={`z-10 hidden lg:block w-48 right-0 mt-1 text-right absolute translate-y-[-70%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-300

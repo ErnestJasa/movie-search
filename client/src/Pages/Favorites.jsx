@@ -65,8 +65,9 @@ function Favorites() {
   useEffect(() => {
     if (
       moviesFromLocalStorage &&
-      moviesFromLocalStorage.length !== 0 &&
-      moviesFromServer.length !== 0
+      moviesFromLocalStorage.length !== 0
+      // &&
+      // moviesFromServer.length !== 0
     ) {
       moviesFromLocalStorage.forEach((movieFromLocalStorage) => {
         if (
@@ -74,7 +75,9 @@ function Favorites() {
             (movie) => movie.imdbID === movieFromLocalStorage.imdbID
           )
         ) {
-          postFavoritesFromLocal(movieFromLocalStorage);
+          if (loggedIn) {
+            postFavoritesFromLocal(movieFromLocalStorage);
+          }
         }
       });
     }
