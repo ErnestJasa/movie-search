@@ -4,11 +4,14 @@ import Home from "./Pages/Home";
 import { Route, Router, Switch } from "wouter";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 import Alert from "./Components/Alert/Alert.jsx";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "./Context/AppContext.jsx";
 
 function App() {
+  const serverInfoText =
+    "The website might not function correctly because the server enters sleep mode after some time of inactivity. After a few minutes everything should be OK.";
   const { showAlert, hideAlert, alert } = useContext(AppContext);
+  const [serverResponding, setServerResponding] = useState(false);
   useEffect(() => {
     async function checkServer() {
       try {
@@ -21,18 +24,28 @@ function App() {
         if (response.status === 200) {
           const data = await response.json();
           hideAlert();
+          setServerResponding(true);
           showAlert({ text: data.message, type: "success" });
         }
       } catch (e) {
         hideAlert();
         showAlert({
-          text: "The website might not function correctly because the server enters sleep mode after some time of inactivity. After a few minutes everything should be OK.",
+          text: serverInfoText,
           type: "danger",
         });
       }
     }
     checkServer();
   }, []);
+  useEffect(() => {
+    if (!serverResponding) {
+      hideAlert();
+      showAlert({
+        text: serverInfoText,
+        type: "danger",
+      });
+    }
+  }, [serverResponding]);
   return (
     <div className="min-h-screen bg-black text-white ">
       <Router base="/movie-search">
