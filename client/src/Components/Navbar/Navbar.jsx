@@ -43,6 +43,7 @@ function Navbar() {
   }, []);
   const login = useGoogleLogin({
     onSuccess: async (response) => {
+      console.log(response);
       try {
         // console.log(response);
         const res = await fetch(
@@ -87,9 +88,46 @@ function Navbar() {
       const data = await res.json();
       console.log(data);
       localStorage.removeItem("favorites");
-      setTimeout(() => {
-        location.reload();
-      }, 500);
+      location.reload();
+    }
+  }
+
+  async function deleteUser() {
+    const confirm = window.confirm("Delete user data?");
+    if (confirm) {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_APP_API_ADDRESS}users`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-type": "application/json",
+            },
+            credentials: "include",
+          }
+        );
+        const data = await res.json();
+        if (res.status === 200) {
+          console.log(data);
+          setLoggedIn(false);
+          setUser({});
+          localStorage.removeItem("favorites");
+
+          hideAlert();
+          showAlert({
+            text: data.message,
+            type: "success",
+          });
+          setTimeout(() => {
+            location.reload();
+          }, 750);
+        } else {
+          console.log(data);
+        }
+      } catch (err) {
+        console.log("something went wrong deleting");
+        console.log(err);
+      }
     }
   }
 
@@ -121,22 +159,36 @@ function Navbar() {
               Logout
             </button> */}
           </div>
-          {show ? (
+          {show && (
             <button
               className="slide-down absolute right-0 lg:hidden text-red-500"
               onClick={logout}
             >
               Logout
             </button>
-          ) : (
-            ""
           )}
-          <div className="hover:opacity-100 hidden lg:block  w-full text-right absolute translate-y-[-100%] group-hover:translate-y-0 duration-300 opacity-0 group-hover:opacity-100">
-            {/* <div className="content right-0 text-right pb-3 absolute"> */}
-            <button className=" text-red-500" onClick={logout}>
-              Logout
-            </button>
-          </div>
+          <ul
+            className={`z-10 hidden lg:block w-48 right-0 mt-1 text-right absolute translate-y-[-70%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-300
+            `}
+            // className="content"
+          >
+            <li>
+              <button
+                className=" text-red-800 hover:text-red-600 hover:shadow-slate-500 shadow-sm p-2 rounded-xl"
+                onClick={deleteUser}
+              >
+                Delete user data
+              </button>
+            </li>
+            <li>
+              <button
+                className=" text-red-500 hover:text-red-400 hover:shadow-slate-500 shadow-sm p-2 rounded-xl"
+                onClick={logout}
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
         </div>
       )}
     </nav>

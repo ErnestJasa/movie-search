@@ -67,14 +67,14 @@ app.post("/google-auth", async (req, res) => {
       path: "/",
       partitioned: true,
     });
-    res.cookie("movie_search_loggedIn", true, {
-      maxAge: 1000 * 60 * 60 * 24 * 7,
-      sameSite: "None",
-      httpOnly: false,
-      secure: true,
-      path: "/",
-      partitioned: true,
-    });
+    // res.cookie("movie_search_loggedIn", true, {
+    //   maxAge: 1000 * 60 * 60 * 24 * 7,
+    //   sameSite: "None",
+    //   httpOnly: false,
+    //   secure: true,
+    //   path: "/",
+    //   partitioned: true,
+    // });
     res.status(200).send(userData);
   } catch (err) {
     console.log(err);
@@ -83,13 +83,13 @@ app.post("/google-auth", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.cookie("movie_search_default", "default cookie", {
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-    sameSite: "none",
-    secure: true,
-    path: "/",
-    partitioned: true,
-  });
+  // res.cookie("movie_search_default", "default cookie", {
+  //   maxAge: 1000 * 60 * 60 * 24 * 7,
+  //   sameSite: "none",
+  //   secure: true,
+  //   path: "/",
+  //   partitioned: true,
+  // });
   res.status(200).send({ status: 200, message: "Server is working" });
 });
 
