@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import useAlert from "../../Hooks/useAlert";
 import "./Alert.css";
 import { AppContext } from "../../Context/AppContext";
 function Alert({ type, text }) {
