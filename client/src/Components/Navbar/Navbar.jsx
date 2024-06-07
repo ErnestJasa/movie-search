@@ -85,8 +85,8 @@ function Navbar() {
     );
     const data = await res.json();
     console.log(data);
-    location.reload();
     localStorage.removeItem("favorites");
+    // location.reload();
   }
 
   const [show, setShow] = useState(false);
