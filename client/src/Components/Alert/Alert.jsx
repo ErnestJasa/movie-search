@@ -6,7 +6,7 @@ function Alert({ type, text }) {
   const { hideAlert } = useContext(AppContext);
   return (
     <div
-      className={` overflow-hidden fixed bottom-5 right-0 md:bottom-10 md:right-5  md:w-[450px] p-2 rounded-xl z-10 
+      className={` overflow-hidden fixed bottom-5 right-0 md:bottom-10 md:right-5 w-full md:w-[450px] p-2 rounded-xl z-10 
    
       `}
     >
