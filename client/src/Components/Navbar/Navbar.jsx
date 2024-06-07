@@ -83,10 +83,14 @@ function Navbar() {
         credentials: "include",
       }
     );
-    const data = await res.json();
-    console.log(data);
-    location.reload();
-    localStorage.removeItem("favorites");
+    if (res.status === 200) {
+      const data = await res.json();
+      console.log(data);
+      localStorage.removeItem("favorites");
+      setTimeout(() => {
+        location.reload();
+      }, 500);
+    }
   }
 
   const [show, setShow] = useState(false);
