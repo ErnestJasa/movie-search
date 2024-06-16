@@ -3,7 +3,7 @@ import {
   getUsers,
   deleteUser,
   deleteUserFavorites,
-} from "../crud.js";
+} from "../services.js";
 import { Router } from "express";
 const router = Router();
 router.get("/login", (req, res) => {

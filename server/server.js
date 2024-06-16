@@ -5,7 +5,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import favoritesRouter from "./routes/favorites.js";
 import usersRouter from "./routes/user.js";
-import { createUser, getUserById } from "./crud.js";
+import { createUser, getUserById } from "./services.js";
 config();
 
 const app = express();

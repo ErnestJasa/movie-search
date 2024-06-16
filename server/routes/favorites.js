@@ -5,7 +5,7 @@ import {
   getMovieByImdbID,
   getFavorites,
   removeMovieFromFavorites,
-} from "../crud.js";
+} from "../services.js";
 
 const router = Router();
 
