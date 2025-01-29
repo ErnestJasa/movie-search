@@ -1,4 +1,4 @@
-## A simple movie search app
+## A simple movie search app --- Demo - https://ernestjasa.github.io/movie-search/
 
 #### You can search and add movies to favorites, and log in with Google. 
 
